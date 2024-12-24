@@ -14,24 +14,16 @@ fn list_jq_paths(value: &Value, current_path: &str, separator: &str) {
             }
         }
         Value::Array(arr) => {
-            let is_nested = arr.iter().any(|v| v.is_object() || v.is_array());
-            let new_path = format!("{}[]", current_path);
-
-            if is_nested {
-                println!("{}", new_path);
-                for v in arr.iter() {
-                    list_jq_paths(v, &new_path, separator);
-                }
-            } else {
-                let values_str: Vec<String> = arr.iter().map(|v| v.to_string()).collect();
-                println!("{}: {}", new_path, values_str.join(", "));
+            for (i, v) in arr.iter().enumerate() {
+                let new_path = format!("{}[{}]", current_path, i);
+                list_jq_paths(v, &new_path, separator);
             }
         }
         _ => println!("{}: {}", current_path, value),
     }
 }
 
-fn main() ->  Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut buffer = String::new();
     io::stdin().read_to_string(&mut buffer)?;
 
