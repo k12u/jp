@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "total": 5,
+  "items": [
+    { "product": "Apple", "quantity": 10 },
+    { "product": "Banana", "quantity": 20 },
+    { "product": "Cherry", "quantity": 15 },
+    { "product": "Date", "quantity": 7 },
+    { "product": "Elderberry", "quantity": 3 }
+  ]
+}
