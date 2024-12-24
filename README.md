@@ -4,6 +4,8 @@ A tool to peek into JSON data.
 
 ## Usage
 
+Default behavior (with indices)
+
 ```shell
 $ cat example.json
 {
@@ -19,9 +21,10 @@ $ cat example.json
 }
 ```
 
+Without indices
+
 ```shell
-$ cat example.json | jp
-.items[]
+$ cat example.json | jp --no-indices (or jp -n)
 .items[].product: "Apple"
 .items[].quantity: 10
 .items[].product: "Banana"
