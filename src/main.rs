@@ -6,7 +6,7 @@ fn list_jq_paths(value: &Value, current_path: &str, separator: &str) {
         Value::Object(map) => {
             for (k, v) in map.iter() {
                 let new_path = if current_path.is_empty() {
-                    k.to_string()
+                    format!(".{}", k)
                 } else {
                     format!("{}{}{}", current_path, separator, k)
                 };
